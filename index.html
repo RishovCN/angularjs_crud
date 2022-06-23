@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="angular.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+
+<body ng-app="crudApp">
+    <section ng-controller="crudController" class="container">
+        <h3>Add User</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td><input class="form-control" type="text" ng-model="data.name" placeholder="name"></td>
+                <td><input class="form-control" type="text" ng-model="data.age" placeholder="age"></td>
+                <td><input class="btn btn-success" type="button" ng-click="addUser()" value="Add User"></td>
+            </tr>
+        </table>
+        
+        <table class="table table-bordered" ng-style="x" style="display: none;">
+            <tr>
+                <td><input class="form-control" type="hidden" ng-model="edit.index"></td>
+                <td><input class="form-control" type="text" ng-model="edit.updateName" placeholder="name"></td>
+                <td><input class="form-control" type="text" ng-model="edit.updateAge" placeholder="age"></td>
+                <td><input class="btn btn-success" type="button" ng-click="updateUser()" value="Update User"></td>
+            </tr>
+        </table>
+        <h3>Users</h3>
+        <table class="table table-bordered">
+            <thead>
+                <th>index</th>
+                <th>name</th>
+                <th>age</th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+            <tr ng-repeat="person in records">
+                <td>{{$index}}</td>
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td><input class="btn btn-info" type="button" ng-click="edit()" name="" value="edit"></td>
+                <td><input class="btn btn-danger" type="button" ng-click="delete()" value="delete"></td>
+            </tr>
+
+        </table>
+    </section>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
